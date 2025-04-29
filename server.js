@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-// Health‐check so GET / returns something friendly
 app.get('/', (_req, res) => {
   return res.send('🚀 Budgetwise AI server is running');
 });
@@ -39,7 +38,6 @@ app.post('/generate', async (req, res) => {
 
     const data = await openaiRes.json();
 
-    // Log the full response so we can inspect it in Render logs
     console.log('OpenAI raw response:', JSON.stringify(data, null, 2));
 
     if (data.error) {
@@ -47,7 +45,6 @@ app.post('/generate', async (req, res) => {
       return res.status(500).json({ error: data.error });
     }
 
-    // Safely extract the generated message
     const aiMessage =
       data.choices &&
       data.choices[0] &&
