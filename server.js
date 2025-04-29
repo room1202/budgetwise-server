@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000; 
 
 app.use(cors({
-    origin: 'https:///budgetwise.freehostspace.com
+    origin: 'https:///budgetwise.freehostspace.com/dashboard
         }));
 app.use(express.json());
 
